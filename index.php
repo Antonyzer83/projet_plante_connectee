@@ -8,6 +8,9 @@ if (isset($_GET['action'])) {
         case 'inscription':
             include('view/inscription.html');
             break;
+        case 'checkconnection':
+            require('controller/connectionpost.php');
+            break;
         case 'checkinscription':
             require('controller/inscriptionpost.php');
             break;
