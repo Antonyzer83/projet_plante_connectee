@@ -5,33 +5,34 @@
 
     <body>
         <h1>Inscription</h1>
-        <form method="post" action="../controller/inscriptionpost.php">
+        <form method="post" action="index.php?action=checkinscription">
             <div>
                 <label for="lastname">Nom :</label>
-                <input type="text" name="lastname" required>
+                <input type="text" id="lastname" name="lastname" required>
             </div>
             <div>
                 <label for="firstname">Prénom :</label>
-                <input type="text" name="firstname" required>
+                <input type="text" id="firstname" name="firstname" required>
             </div>
             <div>
                 <label for="email">Mail :</label>
-                <input type="email" name="email" required>
+                <input type="email" id="email" name="email" required>
             </div>
             <div>
                 <label for="firstpsswd">Mot de passe :</label>
-                <input type="password" name="firstpsswd" required>
+                <input type="password" id="firstpsswd" name="firstpsswd" required>
             </div>
             <div>
                 <label for="secondpsswd">Confirmation du mot de passe :</label>
-                <input type="password" name="secondpsswd" required>
+                <input type="password" id="secondpsswd" name="secondpsswd" required>
             </div>
             <div>
                 <label for="card">Numéro de carte Arduino :</label>
-                <input type="text" name="card" required>
+                <input type="text" id="card" name="card" required>
             </div>
             <!-- Choix de la plante avec menu déroulant -->
             <input type="submit" value="Envoyer">
         </form>
+        <a href="index.php?action=connection">Déjà inscrit ?</a>
     </body>
 </html>
