@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tableau de bord</title>
+</head>
+<body>
+    <h1>Bonjour <?php echo $_SESSION['name'];?></h1>
+    <div>
+        <h2>Plante type : <?php echo $stmt['namep']; ?></h2>
+        <ul>
+            <li>Catégorie : <?php echo $stmt['category']; ?></li>
+            <li>Description : <?php echo $stmt['descr']; ?></li>
+            <li>Humidité optimale du sol : <?php echo $stmt['ground_humidity']; ?> %</li>
+            <li>Humidité optimale de l'air : <?php echo $stmt['air_humidity']; ?> %</li>
+            <li>Température de l'air optimale : <?php echo $stmt['air_temperature']; ?>°C</li>
+            <li>Luminosité : <?php echo $stmt['luminosity']; ?> %</li>
+            <li>Période de floraison : <?php echo $stmt['from_period'] . ' - ' . $stmt['to_period']; ?></li>
+        </ul>
+    </div>
+</body>
+</html>

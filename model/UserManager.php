@@ -30,7 +30,7 @@ class UserManager extends Manager
     public function addUser($fname, $lname, $email, $card_id, $password) {
         $manager = new Manager();
         $db = $manager->dbconnect();
-        $rqt = "INSERT INTO userp(first_name, last_name, email, card_id, password) VALUES('$fname', '$lname', '$email', '$card_id', '$password');";
+        $rqt = "INSERT INTO userp(firstname, lastname, email, card_id, password) VALUES('$fname', '$lname', '$email', '$card_id', '$password');";
         $stmt = $db->prepare($rqt);
         return $stmt->execute();
     }

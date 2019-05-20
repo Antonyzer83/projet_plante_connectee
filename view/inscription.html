@@ -30,7 +30,12 @@
                 <label for="card">Numéro de carte Arduino :</label>
                 <input type="text" id="card" name="card" required>
             </div>
-            <!-- Choix de la plante avec menu déroulant -->
+            <div>
+                <label for="plant">Plante :</label>
+                <select name="plant" id="plant">
+                    <?php echo $content;?>
+                </select>
+            </div>
             <input type="submit" value="Envoyer">
         </form>
         <a href="index.php?action=connection">Déjà inscrit ?</a>

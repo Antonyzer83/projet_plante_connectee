@@ -8,7 +8,11 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     if ($user->rowCount() > 0) {
         $stmt = $user->fetch(PDO::FETCH_ASSOC);
         if (password_verify($password, $stmt['password'])) {
-            echo 'Vous êtes connecté !';
+            session_start();
+            $_SESSION['id'] = $stmt['user_id'];
+            $_SESSION['name'] = $stmt['firstname'];
+            $_SESSION['card'] = $stmt['card_id'];
+            header('Location:index.php?action=bord');
         }
         else {
             echo 'Le mot de passe entré est incorrect !';
