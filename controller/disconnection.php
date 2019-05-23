@@ -4,8 +4,10 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 if (isset($_SESSION['id']) && isset($_SESSION['card']) && isset($_SESSION['name'])) {
     session_destroy();
-    echo 'Vous êtes déconnecté !';
+    $result = 'Vous êtes déconnecté !';
 }
 else {
-    echo 'Vous êtes déjà déconnecté !';
+    $result = 'Vous êtes déjà déconnecté !';
 }
+include('./view/disconnection.php');
+header('Refresh: 5; http://localhost/projet_plante_connectee/index.php?action=connection');

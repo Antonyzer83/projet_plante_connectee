@@ -8,7 +8,7 @@ if ($plants) {
         ?><option value="<?php echo $ligne['plant_id'];?>"><?php echo $ligne['namep'];?></option> <?php
     }
     $content = ob_get_clean();
-    require('view/inscription.html');
+    require('view/inscription.php');
 }
 else {
     echo "Il n'existe pas de plante !";

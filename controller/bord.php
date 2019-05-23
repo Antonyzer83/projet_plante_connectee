@@ -4,7 +4,7 @@ require_once('./model/AdafruitManager.php');
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-if (isset($_SESSION['id'])) {
+if (isset($_SESSION['id']) && isset($_SESSION["name"]) && isset($_SESSION["card"])) {
     $plantmanager = new PlantManager();
     $plant = $plantmanager->getOwnPlant($_SESSION['id']);
     if ($stmt = $plant->fetch(PDO::FETCH_ASSOC)) {
@@ -15,10 +15,10 @@ if (isset($_SESSION['id'])) {
             $humidityground = $data[0]->last_value;
             $humidityair = $data[1]->last_value;
             $temperature = $data[2]->last_value;
-            require('view/bord.html');
+            require('view/bord.php');
         }
         else {
-            "Vous n'avez pas de carte !";
+            echo "Vous n'avez pas de carte !";
         }
     }
     else {
