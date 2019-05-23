@@ -6,6 +6,15 @@
 </head>
 <body>
     <h1>Bonjour <?php echo $_SESSION['name'];?></h1>
+    <a href="index.php?action=disconnection">Se déconnecter</a>
+    <div>
+        <h2>Ma plante</h2>
+        <ul>
+            <li>Humidité su sol : <?php echo $humidityground; ?> %</li>
+            <li>Humidité de l'air : <?php echo $humidityair; ?> %</li>
+            <li>Température de l'air : <?php echo $temperature; ?>°C</li>
+        </ul>
+    </div>
     <div>
         <h2>Plante type : <?php echo $stmt['namep']; ?></h2>
         <ul>

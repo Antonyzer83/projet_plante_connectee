@@ -17,6 +17,9 @@ if (isset($_GET['action'])) {
         case 'bord':
             require('controller/bord.php');
             break;
+        case 'disconnection':
+            require('controller/disconnection.php');
+            break;
     }
 }
 else {
