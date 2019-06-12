@@ -1,4 +1,5 @@
 <?php
+// Vérification de l'existence d'un paramètre GET action
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
     switch ($action) {
@@ -21,7 +22,6 @@ if (isset($_GET['action'])) {
             require('controller/disconnection.php');
             break;
     }
-}
-else {
+} else {
     include('view/connection.html');
 }

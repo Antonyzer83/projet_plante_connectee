@@ -6,6 +6,7 @@
     </head>
 
     <body>
+        <!-- Formulaire d'inscription -->
         <div>
             <h1>Inscription</h1>
             <form method="post" action="index.php?action=checkinscription">

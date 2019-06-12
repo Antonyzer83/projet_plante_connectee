@@ -69,7 +69,11 @@ a:hover {
 }
 
 .good {
-    color: red;
+    color: green;
+}
+
+.medium {
+    color: orange;
 }
 
 .bad {

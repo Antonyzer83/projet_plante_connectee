@@ -8,6 +8,9 @@ class AdafruitManager
 
     public function __construct($key, $username, $group, $url="http://io.adafruit.com/api/v2/")
     {
+        /*
+         * Constructeur permettant l'entrée des données essentielles à la réussite des fonctions suivantes
+         */
         $this->key = $key;
         $this->username = $username;
         $this->group = $group;
@@ -16,6 +19,9 @@ class AdafruitManager
 
     public function createGroup($quoted = false)
     {
+        /*
+         * Fonction permettant de créer un groupe
+         */
         $req = '{"name":';
 
         if($quoted) $req .= '"';
@@ -33,6 +39,9 @@ class AdafruitManager
 
     public function createFeed($value, $quoted = true)
     {
+        /*
+         * Fonction permettant de créer un feed
+         */
         $req = '{"description":';
         if($quoted) $req .= '"';
         $req .= $value;
@@ -59,8 +68,33 @@ class AdafruitManager
         return $res;
     }
 
+    public function send($feed, $value, $quoted = false)
+    {
+        /*
+         * Fonction permettant d'envoyer une nouvelle donnée à un feed appartenant à un groupe précis
+         */
+        $req = '{"value":';
+
+        if($quoted) $req .= '"';
+
+        $req .= $value;
+
+        if($quoted) $req .= '"';
+
+        $req .= '}';
+
+
+        $url = $this->url."/groups/".$this->group."/feeds/".$feed."/data";
+        $res = $this->sendRequest($url, true, $req);
+
+        return $res;
+    }
+
     public function getGroupNames()
     {
+        /*
+         * Fonction permettant la récupération de tous les noms des groupes présents
+         */
         $url = $this->url."/groups";
 
         $c = curl_init($url);
@@ -83,6 +117,9 @@ class AdafruitManager
 
     public function getGroupFeeds()
     {
+        /*
+         * Fonction permettant la récupérationde tous les feeds appartenant à un groupe
+         */
         $url = $this->url."/groups/".$this->group."/feeds/";
 
         return $this->sendRequest($url);
@@ -90,14 +127,19 @@ class AdafruitManager
 
     public function getGroupFeed($feed)
     {
-        $url = $this->url."/groups/".$this->group."/feeds/".$feed."/data";
+        /*
+         * Fonction permettant la récupération de la dernière valeur d'un feed appartenant à  un groupe
+         */
+        $url = $this->url."/groups/".$this->group."/feeds/".$feed."/data/last";
 
         return $this->sendRequest($url);
     }
 
     protected function sendRequest($url, $isPOST = false, $body = "")
     {
-
+        /*
+         * Fonction permettant l'envoi de requête pour chaque fonction précédente
+         */
         $c = curl_init($url);
 
         $headers = array();
