@@ -36,39 +36,33 @@ class UserManager extends Manager
         return $stmt;
     }
 
-    public function addUser($fname, $lname, $email, $card_id, $password, $db=null) {
+    public function addUser($fname, $lname, $email, $card_id, $password) {
         /*
          * Fonction permettant l'ajout d'un utilisateur
          */
-        if ($db === null) {
-            $db = $this->dbconnect();
-        }
+        $db = $this->dbconnect();
         $rqt = "INSERT INTO userp(firstname, lastname, email, card_id, password) VALUES(:fname, :lname, :email, :id, :password);";
         $stmt = $db->prepare($rqt);
         $stmt->execute(["fname" => $fname, "lname" => $lname, "email" => $email, "id" => $card_id, "password" => $password]);
-        return $db->lastInsertId();
+        return $stmt;
     }
 
-    public function addUserPlant($user_id, $plant_id, $db=null) {
+    public function addUserPlant($user_id, $plant_id) {
         /*
          * Fonction permettant l'ajout d'un lien entre un utilisateur et une plante type
          */
-        if ($db === null) {
-            $db = $this->dbconnect();
-        }
+        $db = $this->dbconnect();
         $rqt = "INSERT INTO user_plant(user_id, plant_id) VALUES(:user_id, :plant_id);";
         $stmt = $db->prepare($rqt);
         $stmt->execute(["user_id" => $user_id, "plant_id" => $plant_id]);
         return $stmt;
     }
 
-    public function updateUserPlant($user_id, $new_plant_id, $db=null) {
+    public function updateUserPlant($user_id, $new_plant_id) {
         /*
          * Fonction permettant la MAJ de la plante de l'utilisateur
          */
-        if ($db === null) {
-            $db = $this->dbconnect();
-        }
+        $db = $this->dbconnect();
         $rqt = "UPDATE user_plant SET plant_id = :plant_id WHERE user_id = :user_id;";
         $stmt = $db->prepare($rqt);
         $stmt->execute(["user_id" => $user_id, "plant_id" => $new_plant_id]);

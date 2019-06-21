@@ -16,4 +16,25 @@ class Manager
             return $e;
         }
     }
+
+    public function beginTransaction() {
+        /*
+         * Début de la transaction
+         */
+        return $this->dbconnect()->beginTransaction();
+    }
+
+    public function commit() {
+        /*
+         * Validation
+         */
+        return $this->dbconnect()->commit();
+    }
+
+    public function rollBack() {
+        /*
+         * Rejet
+         */
+        return $this->dbconnect()->rollBack();
+    }
 }

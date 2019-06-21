@@ -28,7 +28,7 @@ if (isset($_POST['lastname'], $_POST['firstname'], $_POST['email'], $_POST['firs
             if ($usermanager->addUser($fname, $lname, $email, $card, $password)) {
                 // Récupération de l'id du nouvel inscrit
                 if ($user = $usermanager->getUser($email, $card)) {
-                    $infos = $user->fetch(PDO::FETCH_ASSOC);
+                    print_r($infos = $user->fetch(PDO::FETCH_ASSOC));
                     // Vérification de l'ajout de la plante dans la BDD
                     if ($usermanager->addUserPlant($infos['user_id'], $plant)) {
                         $params = parse_ini_file('db.ini');
