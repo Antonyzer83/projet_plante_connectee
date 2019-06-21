@@ -33,7 +33,7 @@ h2 {
     background-color: #D3D3D3;
 }
 
-.plant {
+.plant, .update {
     margin: 15px;
     margin-top: 0;
     padding: 15px;

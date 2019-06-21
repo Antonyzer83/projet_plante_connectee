@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Tableau de bord</title>
-    <link rel="stylesheet" type="text/css" href="./style/bord.css">
+    <link rel="stylesheet" type="text/css" href="./view/style/bord.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -21,6 +21,17 @@
                 <li><strong>Température de l'air :</strong> <span class="temperature"><?php echo $temperature; ?></span>°C</li>
             </ul>
         </div>
+        <!-- Partie pour modifier la plante -->
+        <div class="update">
+            <h2>Modifier sa plante</h2>
+            <form action="#" method="post">
+                <select name="plant">
+                    <?php echo $plants; ?>
+                </select>
+                <input type="submit" name="submit" value="Mettre à jour">
+            </form>
+        </div>
+
         <!-- Partie pour les données type -->
         <div class="plant">
             <h2>Plante type : <?php echo $stmt['namep']; ?></h2>
