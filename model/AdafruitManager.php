@@ -118,7 +118,7 @@ class AdafruitManager
     public function getGroupFeeds()
     {
         /*
-         * Fonction permettant la récupérationde tous les feeds appartenant à un groupe
+         * Fonction permettant la récupération de tous les feeds appartenant à un groupe
          */
         $url = $this->url."/groups/".$this->group."/feeds/";
 

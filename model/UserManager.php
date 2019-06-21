@@ -7,8 +7,7 @@ class UserManager extends Manager
         /*
          * Fonction permettant la récupération d'un utilisateur à l'aide d'un email et d'un numéro de carte
          */
-        $manager = new Manager();
-        $db = $manager->dbconnect();
+        $db = $this->dbconnect();
         $rqt = "SELECT * FROM userp WHERE email = :email AND card_id = :id;";
         $stmt = $db->prepare($rqt);
         $stmt->execute(["email" => $email, "id" => $card]);
@@ -19,8 +18,7 @@ class UserManager extends Manager
         /*
          * Fonction permettant la récupération d'un utilisateur à l'aide de son email
          */
-        $manager = new Manager();
-        $db = $manager->dbconnect();
+        $db = $this->dbconnect();
         $rqt = "SELECT * FROM userp WHERE email = :email;";
         $stmt = $db->prepare($rqt);
         $stmt->execute(["email" => $email]);
@@ -31,35 +29,49 @@ class UserManager extends Manager
         /*
          * Fonction permettant la MAJ d'un utilisateur
          */
-        $manager = new Manager();
-        $db = $manager->dbconnect();
+        $db = $this->dbconnect();
         $rqt = "UPDATE userp SET $item = :value WHERE user_id = :id;";
         $stmt = $db->prepare($rqt);
         $stmt->execute(["value" => $value, "id" => $user_id]);
         return $stmt;
     }
 
-    public function addUser($fname, $lname, $email, $card_id, $password) {
+    public function addUser($fname, $lname, $email, $card_id, $password, $db=null) {
         /*
          * Fonction permettant l'ajout d'un utilisateur
          */
-        $manager = new Manager();
-        $db = $manager->dbconnect();
+        if ($db === null) {
+            $db = $this->dbconnect();
+        }
         $rqt = "INSERT INTO userp(firstname, lastname, email, card_id, password) VALUES(:fname, :lname, :email, :id, :password);";
         $stmt = $db->prepare($rqt);
         $stmt->execute(["fname" => $fname, "lname" => $lname, "email" => $email, "id" => $card_id, "password" => $password]);
-        return $stmt;
+        return $db->lastInsertId();
     }
 
-    public function addUserPlant($user_id, $plant_id) {
+    public function addUserPlant($user_id, $plant_id, $db=null) {
         /*
          * Fonction permettant l'ajout d'un lien entre un utilisateur et une plante type
          */
-        $manager = new Manager();
-        $db = $manager->dbconnect();
+        if ($db === null) {
+            $db = $this->dbconnect();
+        }
         $rqt = "INSERT INTO user_plant(user_id, plant_id) VALUES(:user_id, :plant_id);";
         $stmt = $db->prepare($rqt);
         $stmt->execute(["user_id" => $user_id, "plant_id" => $plant_id]);
+        return $stmt;
+    }
+
+    public function updateUserPlant($user_id, $new_plant_id, $db=null) {
+        /*
+         * Fonction permettant la MAJ de la plante de l'utilisateur
+         */
+        if ($db === null) {
+            $db = $this->dbconnect();
+        }
+        $rqt = "UPDATE user_plant SET plant_id = :plant_id WHERE user_id = :user_id;";
+        $stmt = $db->prepare($rqt);
+        $stmt->execute(["user_id" => $user_id, "plant_id" => $new_plant_id]);
         return $stmt;
     }
 
@@ -67,8 +79,7 @@ class UserManager extends Manager
         /*
          * Fonction permettant de supprimer un utilisateur à l'aide de son id
          */
-        $manager = new Manager();
-        $db = $manager->dbconnect();
+        $db = $this->dbconnect();
         $rqt = "DELETE FROM userp WHERE user_id = :id;";
         $stmt = $db->prepare($rqt);
         $stmt->execute(["id" => $user_id]);
