@@ -19,7 +19,7 @@
                     <input type="text" id="firstname" name="firstname" required>
                 </div>
                 <div class="labinp">
-                    <label for="email">Mail :</label>
+                    <label for="email">Email :</label>
                     <input type="email" id="email" name="email" required>
                 </div>
                 <div class="labinp">
