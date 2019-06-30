@@ -10,9 +10,7 @@
 #include "MyAdafruitIO.h"
 
 // ESP.getChipId()
-
 int cardid = ESP.getChipId();
-
 void setup()
 {
   Serial.begin(115200);

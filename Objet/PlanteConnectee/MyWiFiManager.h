@@ -41,7 +41,7 @@
 #include <ArduinoJson.h>          //https://github.com/bblanchon/ArduinoJson
 
 /** \brief SSID du portail captif*/
-#define AP_SSID "MY SSID"                              /*!< Nom du SSID pour le portail captif */
+#define AP_SSID "MY NODEMCU"                             /*!< Nom du SSID pour le portail captif */
 String strWiFiManagerConfigFile = "/WiFiManager.json";  /*!< Nom du fichier de configuration WiFi Manager à stocker sur le SPIFFS*/
 bool bshouldSaveConfig = false;                         /*!< Flag pour savoir si la configuration doit être enregistrée ou pas*/
 char cMqttFlag[4];                                      /*!< Flag "ON" ou "OFF" pour activer la fonctionnalité MQTT ou pas*/

@@ -34,7 +34,7 @@
 
         <!-- Partie pour les données type -->
         <div class="plant">
-            <h2>Plante type : <?php echo $stmt['namep']; ?></h2>
+            <h2>Plante type : <?php echo $stmt['name']; ?></h2>
             <ul>
                 <li><strong>Catégorie :</strong> <?php echo $stmt['category']; ?></li>
                 <li><strong>Description :</strong> <?php echo $stmt['descr']; ?></li>
@@ -42,7 +42,7 @@
                 <li><strong>Humidité optimale de l'air :</strong> <span class="humidityair"><?php echo $stmt['air_humidity']; ?></span> %</li>
                 <li><strong>Température de l'air optimale :</strong> <span class="temperature"><?php echo $stmt['air_temperature']; ?></span>°C</li>
                 <li><strong>Luminosité :</strong> <?php echo $stmt['luminosity']; ?> %</li>
-                <li><strong>Période de floraison :</strong> <?php echo $stmt['from_period'] . ' - ' . $stmt['to_period']; ?></li>
+                <li><strong>Période de floraison :</strong> <?php echo date('F', strtotime($stmt['from_period'])) . ' - ' . date('F', strtotime($stmt['to_period'])); ?></li>
             </ul>
         </div>
     </div>

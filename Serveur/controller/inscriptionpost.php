@@ -36,7 +36,7 @@ if (isset($_POST['lastname'], $_POST['firstname'], $_POST['email'], $_POST['firs
                         // Vérification de la création d'un groupe portant le nom de la carte sur Adafruit
                         if ($adafruitmanager->createGroup()) {
                             // Vérification de la création des six feeds
-                            if ($adafruitmanager->createFeed("humidityground") && $adafruitmanager->createFeed("humidityair") && $adafruitmanager->createFeed("temperature") && $adafruitmanager->createFeed("tophumidityground") && $adafruitmanager->createFeed("tophumidityair") && $adafruitmanager->createFeed("toptemperature")) {
+                            if ($adafruitmanager->createFeed("humidityground") && $adafruitmanager->createFeed("humidityair") && $adafruitmanager->createFeed("temperature") && $adafruitmanager->createFeed("tophumidityground") && $adafruitmanager->createFeed("tophumidityair") && $adafruitmanager->createFeed("toptemperature") && $adafruitmanager->createFeed("levelhg") && $adafruitmanager->createFeed("levelha") && $adafruitmanager->createFeed("levelt")) {
                                 $plantmanager = new PlantManager();
                                 $plants = $plantmanager->getOwnValues($infos['user_id']);
                                 // vérification de l'existence d'une liaison entre la carte et une plante en BDD
@@ -49,6 +49,9 @@ if (isset($_POST['lastname'], $_POST['firstname'], $_POST['email'], $_POST['firs
                                     $adafruitmanager->send("tophumidityground", $ligne["ground_humidity"]);
                                     $adafruitmanager->send("tophumidityair", $ligne["air_humidity"]);
                                     $adafruitmanager->send("toptemperature", $ligne["air_temperature"]);
+                                    $adafruitmanager->send("levelhg", 1);
+                                    $adafruitmanager->send("levelha", 1);
+                                    $adafruitmanager->send("levelt", 1);
                                     echo 'Inscription réussi </br> <a href="index.php?action=connection">Se connecter</a>';
                                 } else {
                                     echo 'Echec lors de la récupération des données';

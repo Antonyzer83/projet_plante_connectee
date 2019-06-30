@@ -8,7 +8,7 @@ class PlantManager extends Manager
          * Fonction permettant de récupérer toues les id et nom de chaque plante
          */
         $db = $this->dbconnect();
-        $rqt = "SELECT plant_id, namep FROM plant;";
+        $rqt = "SELECT plant_id, name FROM plant;";
         $stmt = $db->query($rqt);
         return $stmt;
     }

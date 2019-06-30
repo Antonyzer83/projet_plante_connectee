@@ -7,7 +7,7 @@ $plants = $plantmanager->getPlants();
 if ($plants->rowCount() > 0) {
     ob_start();
     while ($ligne=$plants->fetch(PDO::FETCH_ASSOC)) {
-        ?><option value="<?php echo $ligne['plant_id'];?>"><?php echo $ligne['namep'];?></option> <?php
+        ?><option value="<?php echo $ligne['plant_id'];?>"><?php echo $ligne['name'];?></option> <?php
     }
     // récupération du contenu HTML généré précédemment
     $content = ob_get_clean();

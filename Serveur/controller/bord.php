@@ -52,7 +52,7 @@ if (isset($_SESSION["id"]) && isset($_SESSION["name"]) && isset($_SESSION["card"
                 ob_start();
                 while ($plant = $plants->fetch(PDO::FETCH_ASSOC)) {
                     ?>
-                    <option value="<?php echo $plant['plant_id']; ?>"><?php echo $plant['namep']; ?></option>
+                    <option value="<?php echo $plant['plant_id']; ?>"><?php echo $plant['name']; ?></option>
                     <?php
                 }
                 $plants = ob_get_clean();

@@ -9,7 +9,7 @@ class Manager
          */
         $params = parse_ini_file('db.ini');
         try {
-            $db = new PDO($params['url'], $params['user'], $params['password']);
+            $db = new PDO($params['url'], $params['user'], $params['password'], array(\PDO::MYSQL_ATTR_INIT_COMMAND =>  'SET NAMES utf8'));
             return $db;
         }
         catch (PDOException $e) {
