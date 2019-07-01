@@ -13,4 +13,4 @@ if (isset($_SESSION['id']) && isset($_SESSION['card']) && isset($_SESSION['name'
 }
 include('./view/disconnection.php');
 // Redirection vers la page de connexion
-header('Refresh: 5; http://localhost/projet_plante_connectee/index.php?action=connection');
+header('Refresh: 5; http://localhost/projet_plante_connectee/Serveur/index.php?action=connection');
