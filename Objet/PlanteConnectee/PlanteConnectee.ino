@@ -30,4 +30,5 @@ void loop()
   getDhtData();
   getSoilData();
   loopAdafruitIO();
+  delay(30000);
 }
