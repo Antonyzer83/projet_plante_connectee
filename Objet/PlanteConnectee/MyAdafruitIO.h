@@ -47,14 +47,14 @@
 #define IO_SERVER         "io.adafruit.com"
 #define IO_SERVERPORT     1883
 #define IO_USERNAME       "AntonyC"
-#define IO_KEY            "905270416a5141eeb60eab9435d95c14"
+#define IO_KEY            "fceb31e80aa14b09bdd875124782ee8e"
 // Feeds
 #define FEED_ONOFF        "/feeds/onoff"
-#define FEED_TEMPERATURE  "/groups/9250004/feeds/temperature"
-#define FEED_HUMIDITY     "/groups/9250004/feeds/humidityair"
-#define FEED_SOIL         "/groups/9250004/feeds/humidityground"
+#define FEED_TEMPERATURE  "/feeds/temperature"
+#define FEED_HUMIDITY     "/feeds/humidityair"
+#define FEED_SOIL         "/feeds/humidityground"
 // Frequence d'envoi des données
-#define FEED_FREQ         5
+#define FEED_FREQ         10
 // Actuateur
 int iAdafruitActuatorPin = 2;             // Broche à utiliser pour l'actuateur
 /************************** Variables ****************************************/
@@ -148,6 +148,8 @@ void getAndSendDataToAdafruit() {
   temperatureFeed.publish(myRandomTemp);
   humidityairFeed.publish(myRandomHum);
   humiditygroundFeed.publish(myRandomHum);
+
+  MYDEBUG_PRINTLN(myRandomTemp);
 }
 
 /**
@@ -174,6 +176,7 @@ void setupAdafruitIO() {
   MyAdafruitMqtt.subscribe(&onoffbutton);
 
   MyAdafruitTicker.attach(FEED_FREQ, getAndSendDataToAdafruit);
+  MYDEBUG_PRINTLN("Setup Adafruit");
 }
 
 /**
